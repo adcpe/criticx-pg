@@ -18,8 +18,10 @@ arr = [
   { name: "Children of Morta", genre: "Role-playing (RPG)", price: 6999, release_date: "2019-Sep-03" },
 ]
 
-arr.each { |x| Game.create(name: x[:name], genre: x[:genre], price: x[:price], release_date: x[:release_date]) }
+arr.each { |x| Game.create(x) }
 
 Game.find_by(name: 'Borderlands 3').update(genre: 'Shooter')
 Game.find_by(name: 'Pokémon Shield').update(price: 3999)
 Game.where(genre: 'Role-playing (RPG)').update_all(price: 2999)
+
+Game.destroy_all
