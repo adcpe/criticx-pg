@@ -19,6 +19,12 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def destroy
+    @company = Company.find(params[:id])
+    @company.destroy
+    render json: { status: 'Successfully destroyed', data: @company }, status: :ok
+  end
+
   private
 
   def company_params
